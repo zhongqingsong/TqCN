@@ -125,27 +125,31 @@ goto end
 
 
 :package
-REM 如果存在，则先清除
-if exist %ChSave% (
-	del %ChSave%
-)
+cls
 
-执行打包指令
-set curdir=%ChOut%
-for /f "delims=" %%a in ('dir /b /a-d /o-d "%curdir%\*.*"') do (
-	%LibPath% %ChSave% -add %BasePath%workplace\ch\%%a compression 9
-)
-
-REM 最新工具指令，无法正常运行。无法理解官方的思维逻辑
-REM %LibPath% %ChSave% -replace %ChOut% %EnOut% compression 9
+REM 复制文件到译文目录
+set chexe=%ChOut%\ArchiveTool.exe
+set chbat=%ChOut%\pack.bat
 
 echo;
-echo; 已打包完成：%ChSave%
-pause>nul
+echo;  部署打包环境中...
+echo;
+copy %BasePath%libs\ArchiveTool.exe %chexe%
+copy %BasePath%libs\pack.bat %chbat%
+echo;
+echo;  打包环境已部署...
+
+REM 文件准备就位，开始打包
+echo;
+echo; 开始执行打包...
+set pakBat=%ChOut%\pack.bat
+%pakBat% %BasePath%
+
+REM 已经跳转到其他脚本
 goto end
 
 :return
-REM 展示完消息后，回车，重刷页面
+REM 展示完消息后，回车，重刷页面 BasePath
 echo;
 pause
 goto mainUI
