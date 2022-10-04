@@ -19,6 +19,6 @@ echo;
 echo; 已打包完成：%ChSave%
 
 REM 跳转到清空现场脚本
-echo; 开始清理现场...
+REM echo; 开始清理现场...
 set pakBat=%1libs\clear.bat
 %pakBat% %1
