@@ -104,4 +104,3 @@ tagPatcher17=补丁所需版本：
 tagPatcher18=当前版本为：
 tagPatcher19=未安装《泰坦之旅》。
 tagPatcher20=《泰坦之旅》正在运行。
-
